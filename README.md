@@ -4,4 +4,4 @@ Script che permette di utilizzare un generico client TOTP per lo SPID di Lepida.
 
 ## Utilizzo
 
-Lancia lo script e segui le istruzioni. Alla fine ti aprirà un QR code nel browser, che potrai usare nella tua app TOTP (ad esempio [andOTP](https://f-droid.org/en/packages/org.shadowice.flocke.andotp/)).
+Lancia lo script e segui le istruzioni. Alla fine ti aprirà un QR code nel browser, che potrai usare nella tua app TOTP (ad esempio [Aegis Authenticator](https://getaegis.app/)).
