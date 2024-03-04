@@ -2,8 +2,6 @@
 
 import argparse
 from urllib.parse import urlparse, parse_qs
-import webbrowser
-import os
 
 import qrcode
 
@@ -44,10 +42,9 @@ def main():
 
     otpauth = f"otpauth://totp/LepidaID?secret={secret}&algorithm=SHA1&period=30&digits=6&issuer=id.lepida.it"
 
-    img = qrcode.make(otpauth)
-    img.save("/tmp/qr.png")
-    print("Scritto /tmp/qr.png. Ricordati di rimuoverlo.")
-    webbrowser.open("/tmp/qr.png")
+    qr = qrcode.QRCode()
+    qr.add_data(otpauth)
+    qr.print_ascii()
 
 if __name__ == "__main__":
     main()
