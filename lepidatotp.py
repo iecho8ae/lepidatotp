@@ -3,11 +3,9 @@
 import argparse
 from urllib.parse import urlparse, parse_qs
 import webbrowser
-import os
-
 import qrcode
 
-START_URL = 'https://id.lepida.it/lepidaid/app/associaAppLogin?1-1.0-loginSMS-loginDiv-loginForm-entra&X-App-Id=PROD-LEPIDAIDAPP-A&X-App-Version=2.0.0'
+START_URL = 'https://id.lepida.it/lepidaid/app/associaAppLogin?1-1.0-loginSMS-loginDiv-loginForm-entra&X-App-Id=PROD-LEPIDAIDAPP-A&X-App-Version=3.0.0'
 
 def decode_secret(secret: str) -> str:
     encoded = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567'
@@ -33,7 +31,7 @@ def main():
         auth_url = args.url
     else:
         print(f'Vai su {START_URL} e segui le istruzioni.')
-        print(f'Quando raggiungi una pagina che dice "end login page", incolla l\'URL qui:')
+        print(f'Quando raggiungi una pagina che dice "Si è verificato un errore durante l\'associazione dell\'app", incolla l\'URL qui:')
         webbrowser.open(START_URL, new=2)
         auth_url = input('URL: ')
 
@@ -44,10 +42,10 @@ def main():
 
     otpauth = f"otpauth://totp/LepidaID?secret={secret}&algorithm=SHA1&period=30&digits=6&issuer=id.lepida.it"
 
-    img = qrcode.make(otpauth)
-    img.save("/tmp/qr.png")
-    print("Scritto /tmp/qr.png. Ricordati di rimuoverlo.")
-    webbrowser.open("/tmp/qr.png")
+    print('\nEcco il codice QR da scansionare con la tua app TOTP')
+    qr = qrcode.QRCode()
+    qr.add_data(otpauth)
+    qr.print_ascii()
 
 if __name__ == "__main__":
     main()
