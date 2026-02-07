@@ -5,7 +5,7 @@ from urllib.parse import urlparse, parse_qs
 import webbrowser
 import qrcode
 
-START_URL = 'https://id.lepida.it/lepidaid/app/associaAppLogin?1-1.0-loginSMS-loginDiv-loginForm-entra&X-App-Id=PROD-LEPIDAIDAPP-A&X-App-Version=3.0.0'
+START_URL = 'https://id.lepida.it/lepidaid/app/associaAppLogin?X-App-Id=PROD-LEPIDAIDAPP-A&X-App-Version=3.0.0'
 
 def decode_secret(secret: str) -> str:
     encoded = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567'
